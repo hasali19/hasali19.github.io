@@ -1,0 +1,158 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background-image: url(background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.content {
+  min-height: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.3);
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes bottomright {
+  0% {
+    width: 0;
+    height: 0;
+    padding-top: 0;
+    visibility: visible;
+  }
+  25% {
+    width: 100%;
+    height: 0;
+    padding-top: 0;
+    visibility: visible;
+  }
+  50% {
+    height: 100%;
+    width: 100%;
+    visibility: visible;
+  }
+  75% {
+    visibility: visible;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+@keyframes topleft {
+  0% {
+    width: 0;
+    height: 0;
+    padding-bottom: 0;
+    visibility: hidden;
+  }
+  25% {
+    width: 0;
+    height: 0;
+    padding-bottom: 0;
+    visibility: hidden;
+  }
+  50% {
+    width: 0;
+    height: 0;
+    padding-bottom: 0;
+    visibility: hidden;
+  }
+  75% {
+    width: 100%;
+    height: 0;
+    padding-bottom: 0;
+    visibility: visible;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.animated {
+  position: relative;
+  border: 5px solid transparent;
+  z-index: 10;
+}
+
+.animated:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  padding-right: 5px;
+  left: -5px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 5px solid #fff;
+  border-right: 5px solid #fff;
+  visibility: hidden;
+}
+
+.animated:before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  padding-left: 5px;
+  width: 100%;
+  height: 100%;
+  border-top: 5px solid #fff;
+  border-left: 5px solid #fff;
+  visibility: hidden;
+}
+
+.animated.active:before {
+  animation: topleft 1s ease-in-out;
+}
+
+.animated.active:after {
+  animation: bottomright 1s ease-in-out;
+}
+
+.animated.done:before {
+  display: none;
+}
+
+.animated.done:after {
+  display: none;
+}
+
+.animated.done {
+  border: 5px solid #fff;
+}
+
+.animated-content {
+  display: flex;
+  padding: 32px;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  font-family: "Crete Round", serif;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.animated-content.visible {
+  opacity: 1;
+}
+
+.name {
+  margin: 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.tagline {
+  text-align: center;
+  font-weight: normal;
+}
+
+.social {
+  padding: 16px;
+}
